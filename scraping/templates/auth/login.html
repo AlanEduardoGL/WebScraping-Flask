@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center;">
+    <section>
+        <h1>Iniciar Sesión</h1>
+        <hr class="border opacity-75">
+        <form method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input placeholder="Correo Electrónico" type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input placeholder="Contraseña" type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button title="Iniciar Sesión" type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            <a href="{{ url_for('home.index') }}" title="Volver" type="submit" class="btn btn-outline-danger">Volver</a>
+        </form>
+        <hr class="border opacity-75">
+        <p>¿Aún no registras una cuenta? <a title="Registrarme" href="{{ url_for('auth.register') }}">Registrarme</a></p>
+    </section>
+</div>
+{% endblock %}

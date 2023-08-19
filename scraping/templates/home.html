@@ -1,0 +1,18 @@
+<section class="bg-light" id="home">
+    <div class="container col-xxl-8 px-4 py-5">
+        <div >
+            <div class="col-lg-12">
+                {% if g.user %}
+                <h2 class="display-4">¡Bienvenido, {{ g.user.name }}!</h2>
+                {% else %}
+                <h2 class="display-4">¡Bienvenido!</h2>
+                {% endif %}
+                <p class="lead fs-3">Aquí podras visualizar en tiempo real precios de productos de tu preferencia por cotizar.</p>
+                <hr class="my-4">
+                <p class="fs-5">Puedes iniciar sesión o registrar una nueva cuenta.</p>
+                <a title="Iniciar Sesión" class="btn btn-outline-primary btn-lg" href="{{ url_for('auth.login') }}" role="button">Iniciar Sesión</a>
+                <a title="Registrarme" class="btn btn-outline-primary btn-lg" href="{{ url_for('auth.register') }}" role="button">Registrarme</a>
+            </div>
+        </div>
+    </div>
+</section>

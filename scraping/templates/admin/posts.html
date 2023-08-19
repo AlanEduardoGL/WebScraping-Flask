@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div class="header">
+        <h2 class="mb-3 mt-3">{% block title %}Resultados de, {{ g.user.username }}.{% endblock %}</h2>
+        <div class="d-flex justify-content-between mb-3">
+            <p>¡Bienvenido {{ g.user.username }}!</p>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="fs-5">Título Insumo</th>
+                <th class="fs-5">Nombre Insumo</th>
+                <th class="fs-5">Precio Insumo</th>
+                <th class="fs-5">Descripción Insumo</th>
+                <th class="fs-5">URL Insumo</th>
+                <th class="fs-5">Fecha Creación</th>
+                <th class="fs-5">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts | reverse %}
+            {% if g.user.id == post.id_author_insumo %}
+            <tr>
+                <td>{{ post.title_insumo }}</td>
+                <td>{{ post.name_insumo }}</td>
+                <td>{{ post.price_insumo }}</td>
+                <td>{{ post.attributes_insumo }}</td>
+                <td>{{ post.url }}</td>
+                <td>{{ post.created }}</td>
+                <td>
+                    <a href="{{ url_for('post.see_input', id = post.id_insumo) }}" class="btn btn-sm btn-warning">Más Detalles</a>
+                    <a href="{{ url_for('post.confirm', id = post.id_insumo) }}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

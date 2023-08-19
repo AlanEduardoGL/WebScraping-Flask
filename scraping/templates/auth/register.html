@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrarme{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center;">
+    <section>
+        <h1>Registrar Nueva Cuenta</h1>
+        <hr class="border opacity-75">
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de Usuario</label>
+                <input placeholder="Nombre de Usuario" type="text" class="form-control" id="username" name="username" minlength="8" maxlength="16" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input placeholder="Correo Electrónico" type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirm_email" class="form-label">Confirmar Correo Electrónico</label>
+                <input placeholder="Confirmar Correo Electrónico" type="email" class="form-control" id="confirm_email" name="confirm_email" required>
+                <div id="massage_confirm_email" class="form-text">Asegurate de que los correos electrónicos sean identicos.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input placeholder="Contraseña" type="password" class="form-control" id="password" name="password" required minlength="6" maxlength="12">
+            </div>
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
+                <input placeholder="Confirmar Contraseña" type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6" maxlength="12">
+                <div id="massage_confirm_password" class="form-text">Asegurate de que las contraseñas sean identicas.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarme</button>
+            <a href="{{ url_for('home.index') }}" title="Volver" type="submit" class="btn btn-outline-danger">Volver</a>
+        </form>
+        <hr class="border opacity-75">
+        <p>¿Ya dispones de una cuenta? <a title="Iniciar Sesión" href="{{ url_for('auth.login') }}">Inicia Sesión</a></p>
+    </section>
+</div>
+{% endblock %}
