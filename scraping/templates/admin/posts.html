@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% include 'navbar.html' %}
+
 <div class="container">
 
     <div class="header">
-        <h2 class="mb-3 mt-3">{% block title %}Resultados de, {{ g.user.username }}.{% endblock %}</h2>
+        <h2 class="mb-3 mt-3">{% block title %}Resultados de {{ g.user.username }}.{% endblock %}</h2>
         <div class="d-flex justify-content-between mb-3">
-            <p>¡Bienvenido {{ g.user.username }}!</p>
+            <p>Los resultados de los insumos se actualizan de manera automática cada 15 minutos.</p>
+            <button title="Actualizar Insumos" type="button" class="btn btn-outline-primary">Actualizar Insumos</button>
         </div>
     </div>
     <table class="table">
@@ -23,7 +27,7 @@
         </thead>
         <tbody>
             {% for post in posts | reverse %}
-            {% if g.user.id == post.id_author_insumo %}
+            <!-- {% if g.user.id == post.id_author_insumo %} -->
             <tr>
                 <td>{{ post.title_insumo }}</td>
                 <td>{{ post.name_insumo }}</td>
@@ -36,7 +40,7 @@
                     <a href="{{ url_for('post.confirm', id = post.id_insumo) }}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>
             </tr>
-            {% endif %}
+            <!-- {% endif %} -->
             {% endfor %}
         </tbody>
     </table>
